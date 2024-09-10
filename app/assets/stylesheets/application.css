@@ -13,3 +13,45 @@
  *= require_tree .
  *= require_self
  */
+
+
+ body {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+  }
+  
+  h2 {
+    color: white;
+  }
+  
+  a {
+    color: grey;
+  }
+  
+  a:hover {
+    color: lightgrey;
+  }
+  
+  .field label {
+    color: white;
+  }
+  
+  input, select, textarea {
+    background-color: #333;
+    color: white;
+    border: 1px solid #555;
+  }
+  
+  input[type="submit"] {
+    background-color: grey;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: lightgrey;
+  }
+  
