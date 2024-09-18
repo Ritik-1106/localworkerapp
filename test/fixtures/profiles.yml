@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  age: 1
+  graduation: 1
+  postgraduation: 1
+  graduation_year: 1
+  postgraduation_year: 1
+  skills: MyText
+  country: MyString
+  aadhar_no: MyString
+  experience: 1
+
+two:
+  age: 1
+  graduation: 1
+  postgraduation: 1
+  graduation_year: 1
+  postgraduation_year: 1
+  skills: MyText
+  country: MyString
+  aadhar_no: MyString
+  experience: 1

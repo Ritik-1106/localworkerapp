@@ -1,0 +1,14 @@
+<!-- app/views/profiles/show.html.erb -->
+<h1><%=current_user.name %></h1>
+
+<p><strong>Age:</strong> <%= @profile.age %></p>
+<p><strong>Graduation:</strong> <%= @profile.graduation %></p>
+<p><strong>Postgraduation:</strong> <%= @profile.postgraduation %></p>
+<p><strong>Graduation Year:</strong> <%= @profile.graduation_year %></p>
+<p><strong>Postgraduation Year:</strong> <%= @profile.postgraduation_year %></p>
+<p><strong>Skills:</strong> <%= @profile.skills %></p>
+<p><strong>Country:</strong> <%= @profile.country %></p>
+<p><strong>Aadhar No:</strong> <%= @profile.aadhar_no %></p>
+<p><strong>Experience:</strong> <%= @profile.experience %></p>
+
+<%= link_to 'Edit Profile', edit_profile_path %>

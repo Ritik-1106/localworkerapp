@@ -1,0 +1,19 @@
+<h1>Available Jobs</h1>
+
+
+<% if current_user.contractor? %>
+  <%= link_to 'Post a Job', new_job_path %> <!-- Only for contractors -->
+<% end %>
+
+<ul>
+  <% @jobs.each do |job| %>
+    <li>
+      <%= link_to job.name, job_path(job) %>
+      - <%= job.location %> - <%= job.salary %> 
+    </li>
+  <% end %>
+</ul>
+
+
+
+

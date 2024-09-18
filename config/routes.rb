@@ -1,18 +1,30 @@
 Rails.application.routes.draw do
-  root "homes#index"
+  # Root route
+
+
+  # Devise routes for authentication with custom sessions controller
   devise_for :users
+  root "homes#index"
 
 
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  # this is custom route
+  get "contractor", to: "homes#contractor" # Route for contractor action
+  get "worker", to: "homes#worker"
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  # get "up" => "rails/health#show", as: :rails_health_check
+  resource :profile, only: [ :new, :create, :edit, :update, :show ]
 
-  # # Render dynamic PWA files from app/views/pwa/*
-  # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
-  # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
+  # Routes for UsersController (for user profiles)
+  resources :users, only: [ :show, :edit, :update ]
 
-  # Defines the root path route ("/")
-  # root "posts#index"
+  # Routes for JobsController and nested ApplicationsController
+  resources :jobs do
+    resources :job_applications, only: [ :new, :create ] do
+      collection do
+        get :total_applicants  # Route to view all applicants
+      end
+      member do
+        patch :update_status   # Route to update application status
+      end
+    end
+  end
 end

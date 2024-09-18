@@ -1,0 +1,52 @@
+<h1>Complete Your Profile</h1>
+
+<%= form_with(model: @profile, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :age %>
+    <%= form.number_field :age %>
+  </div>
+
+<div class="field">
+  <%= form.label :graduation %>
+  <%= form.text_field :graduation %> <!-- This accepts string input -->
+</div>
+
+<div class="field">
+  <%= form.label :postgraduation %>
+  <%= form.text_field :postgraduation %> <!-- This accepts string input -->
+</div>
+
+  <div class="field">
+    <%= form.label :graduation_year %>
+    <%= form.number_field :graduation_year %>
+  </div>
+
+  <div class="field">
+    <%= form.label :postgraduation_year %>
+    <%= form.number_field :postgraduation_year %>
+  </div>
+
+  <div class="field">
+    <%= form.label :skills %>
+    <%= form.text_area :skills %>
+  </div>
+
+  <div class="field">
+    <%= form.label :country %>
+    <%= form.text_field :country %>
+  </div>
+
+  <div class="field">
+    <%= form.label :aadhar_no %>
+    <%= form.text_field :aadhar_no %>
+  </div>
+
+  <div class="field">
+    <%= form.label :experience %>
+    <%= form.number_field :experience %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

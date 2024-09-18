@@ -1,0 +1,22 @@
+<h2>Applicants for <%= @job.name %></h2>
+
+<% @applicants.each do |applicant| %>
+  <div>
+    <h3>Applicant: <%= applicant.worker.profile.name %></h3>
+    <p>Education: <%= applicant.worker.profile.education %></p>
+    <p>Skills: <%= applicant.worker.profile.skills %></p>
+    <p>Status: <%= applicant.status %></p>
+
+    <%= form_with model: applicant, url: update_status_job_application_path(applicant), method: :patch do |f| %>
+      <div>
+        <%= f.label :status, "Change Status" %>
+        <%= f.select :status, ["accepted", "rejected", "pending"], prompt: "Select Status" %>
+      </div>
+      <div>
+        <%= f.submit "Update Status" %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<%= link_to 'Back to Job', job_path(@job) %>

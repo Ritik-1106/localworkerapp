@@ -1,0 +1,40 @@
+<h2>Application Details for <%= @job_application.job.name %></h2>
+
+<p><strong>Status:</strong> <%= @job_application.status %></p>
+
+<% if current_user.worker? %>
+  <!-- Visible only to the worker who applied for the job -->
+  <h3>Your Application Details:</h3>
+  <p><strong>Description:</strong> <%= @job_application.description %></p>
+  <p><strong>Soft Skills:</strong> <%= @job_application.softskills %></p>
+  <p><strong>Expected Salary:</strong> <%= @job_application.expectedsalary %></p>
+  
+  <%= link_to 'Back to Job', job_path(@job_application.job) %>
+
+<% elsif current_user.contractor? %>
+  <!-- Visible only to the contractor for review -->
+  <h3>Applicant Details:</h3>
+  <p><strong>Description:</strong> <%= @job_application.description %></p>
+  <p><strong>Soft Skills:</strong> <%= @job_application.softskills %></p>
+  <p><strong>Expected Salary:</strong> <%= @job_application.expectedsalary %></p>
+
+  <!-- Display worker's profile details -->
+  <h3>Worker's Profile</h3>
+  <p><strong>Name:</strong> <%= @job_application.worker.profile.name %></p>
+  <p><strong>Education:</strong> <%= @job_application.worker.profile.education %></p>
+  <p><strong>Experience:</strong> <%= @job_application.worker.profile.experience %></p>
+  <p><strong>Skills:</strong> <%= @job_application.worker.profile.skills %></p>
+
+  <!-- Contractor can accept or reject the application -->
+  <%= form_with model: @job_application, url: update_status_job_application_path(@job_application), method: :patch do |f| %>
+    <div class="field">
+      <%= f.label :status, "Change Status" %><br>
+      <%= f.select :status, ["accepted", "rejected", "pending"], prompt: "Select Status" %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Update Status" %>
+    </div>
+  <% end %>
+
+  <%= link_to 'Back to Job', job_path(@job_application.job) %>
+<% end %>

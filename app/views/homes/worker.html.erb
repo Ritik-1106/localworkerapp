@@ -1,0 +1,14 @@
+<h1>Worker Dashboard</h1>
+
+<p>Welcome, <%= @worker.name %>!</p>
+
+<ul>
+  <li>Email: <%= @worker.email %></li>
+  <li>Contact Number: <%= @worker.contact_no %></li>
+  <li>Location: <%= @worker.location %></li>
+</ul>
+<%= link_to 'educational details', profile_path(@worker) %>
+
+
+
+<%= link_to "see all post", jobs_path %>

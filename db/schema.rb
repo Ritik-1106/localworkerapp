@@ -10,17 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_10_184359) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_17_063351) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "applications", force: :cascade do |t|
-    t.integer "job_id"
-    t.integer "worker_id"
-    t.string "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -28,9 +20,19 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_10_184359) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "job_applications", force: :cascade do |t|
+    t.integer "job_id"
+    t.integer "worker_id"
+    t.string "status", default: "Pending"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "description"
+    t.text "softskills"
+    t.string "expected_salary"
+  end
+
   create_table "jobs", force: :cascade do |t|
     t.string "name"
-    t.string "timing"
     t.string "salary"
     t.text "description"
     t.integer "contractor_id"
@@ -38,6 +40,23 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_10_184359) do
     t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "vacancies", default: 1
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.integer "age"
+    t.string "graduation"
+    t.string "postgraduation"
+    t.integer "graduation_year"
+    t.integer "postgraduation_year"
+    t.text "skills"
+    t.string "country"
+    t.string "aadhar_no"
+    t.integer "experience"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -65,8 +84,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_10_184359) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "applications", "jobs"
-  add_foreign_key "applications", "users", column: "worker_id"
+  add_foreign_key "job_applications", "jobs"
+  add_foreign_key "job_applications", "users", column: "worker_id"
   add_foreign_key "jobs", "categories"
   add_foreign_key "jobs", "users", column: "contractor_id"
+  add_foreign_key "profiles", "users"
 end
