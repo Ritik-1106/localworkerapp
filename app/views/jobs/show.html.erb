@@ -1,0 +1,22 @@
+<h1><%= @job.name %></h1>
+<p><strong>Location:</strong> <%= @job.location %></p>
+<p><strong>Description:</strong> <%= @job.description %></p>
+<p><strong>Salary:</strong> <%= @job.salary %></p>
+<p><strong>Vacancy:</strong> <%= @job.vacancies %></p>
+
+<!-- Link for workers to apply for the job -->
+<% if current_user.worker? %> <!-- Show the apply link only if the user is a worker -->
+  
+  <%= link_to 'Apply for Job', new_job_job_application_path(@job) %>
+
+
+<% end %>
+
+<!-- Only contractors can see edit and delete job options -->
+<% if current_user.contractor? %>
+  <%= link_to 'Edit Job', edit_job_path(@job) %>
+  <%= link_to 'Delete Job', job_path(@job), data: { turbo_method: :delete }, method: :delete, confirm: 'Are you sure?' %>
+  <%= link_to 'View All Applicants', total_applicants_job_job_applications_path(@job), class: 'btn btn-primary' %>
+<% end %>
+
+<%= link_to 'See Jobs', jobs_path %>

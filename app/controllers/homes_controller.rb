@@ -1,8 +1,11 @@
 class HomesController < ApplicationController
   before_action :authenticate_user!
 
+  def contractor
+    @contractor = current_user
+  end
 
-
-  def index
+  def worker
+    @worker = current_user
   end
 end

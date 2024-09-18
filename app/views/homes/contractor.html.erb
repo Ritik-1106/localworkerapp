@@ -1,0 +1,14 @@
+<h1>Contractor Dashboard</h1>
+
+<p>Welcome, <%= @contractor.name %>!</p>
+
+<ul>
+  <li>Email: <%= @contractor.email %></li>
+  <li>Contact Number: <%= @contractor.contact_no %></li>
+  <li>Location: <%= @contractor.location %></li>
+</ul>
+
+<%= link_to 'Edit Profile', edit_user_path(@contractor) %>
+<%= link_to 'create jobpost', new_job_path %>
+<%= link_to 'View All Applicants', total_applicants_job_job_applications_path(@job) %>
+

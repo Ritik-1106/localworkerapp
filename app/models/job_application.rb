@@ -1,4 +1,4 @@
-class Application < ApplicationRecord
+class JobApplication  < ApplicationRecord
   # Associations
   belongs_to :job
   belongs_to :worker, class_name: "User"
@@ -10,4 +10,6 @@ class Application < ApplicationRecord
   validates :status, presence: true
   validates :job_id, presence: true
   validates :worker_id, presence: true
+  validates :description, presence: true
+  validates :softskills, presence: true
 end

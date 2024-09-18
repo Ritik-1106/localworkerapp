@@ -10,16 +10,13 @@ class User < ApplicationRecord
 
   # Associations
   has_many :jobs, foreign_key: :contractor_id, dependent: :destroy
-  has_many :applications, foreign_key: :worker_id, dependent: :destroy
+  has_many :job_applications, foreign_key: :worker_id, dependent: :destroy
+  has_one :profile, dependent: :destroy
 
-  # Validations
-  # validates :name, presence: true
-  # validates :email, presence: true, uniqueness: true
-  # validates :role, presence: true
 
   # Validations
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
-  validates :role, presence: true, inclusion: { in: %w[contractor worker admin], message: "must be contractor, worker, or admin" }
+  validates :role, presence: true, inclusion: { in: %w[contractor worker], message: "must be contractor, worker" }
   validates :name, presence: true
-  validates :phone, format: { with: /\A\d{10}\z/, message: "must be 10 digits" }, allow_blank: true
+  validates :contact_no, format: { with: /\A\d{10}\z/, message: "must be 10 digits" }, allow_blank: true
 end
