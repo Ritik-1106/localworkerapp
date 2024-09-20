@@ -1,0 +1,5 @@
+<% if current_user.contractor? %>
+  <p><%= link_to "Back to Home", contractor_path %></p>
+<% else %>
+  <p><%= link_to "Back to Home", worker_path %></p>
+<% end %>

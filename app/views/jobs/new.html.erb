@@ -1,24 +1,39 @@
 <h1><%= @job.new_record? ? "Post a New Job" : "Edit Job" %></h1>
+
 <%= form_for @job do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
 
-  <%= f.label :description %>
-  <%= f.text_area :description %>
+  <div class="form-group">
+    <%= f.label :name, "Job Title" %>
+    <%= f.text_field :name, class: "form-control", placeholder: "Enter job title" %>
+  </div>
 
-  <%= f.label :salary %>
-  <%= f.text_field :salary %>
+  <div class="form-group">
+    <%= f.label :description, "Job Description" %>
+    <%= f.text_area :description, class: "form-control", placeholder: "Enter job description" %>
+  </div>
 
+  <div class="form-group">
+    <%= f.label :salary, "Salary" %>
+    <%= f.text_field :salary, class: "form-control", placeholder: "Enter salary" %>
+  </div>
 
+  <div class="form-group">
+    <%= f.label :location, "Location" %>
+    <%= f.text_field :location, class: "form-control", placeholder: "Enter job location" %>
+  </div>
 
-  <%= f.label :location %>
-  <%= f.text_field :location %>
+  <div class="form-group">
+    <%= f.label :vacancies, "Number of Vacancies" %>
+    <%= f.text_field :vacancies, class: "form-control", placeholder: "Enter number of vacancies" %>
+  </div>
 
-  <%= f.label :vacancies %>
-  <%= f.text_field :vacancies %>
+  <div class="form-group">
+    <%= f.label :category, "Job Category" %>
+    <%= f.collection_select :category_id, Category.all, :id, :name, {}, { class: "form-control" } %>
+  </div>
 
-  <%= f.label :category %>
-  <%= f.collection_select :category_id, Category.all, :id, :name %>
+  <div class="form-group">
+    <%= f.submit 'Save Job', class: "btn btn-primary" %>
+  </div>
 
-  <%= f.submit 'Save Job' %>
 <% end %>

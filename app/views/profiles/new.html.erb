@@ -1,6 +1,7 @@
 <h1>Complete Your Profile</h1>
 
-<%= form_with(model: @profile, local: true) do |form| %>
+<%= form_with(model: @profile, url: profile_path, local: true) do |form| %>
+
   <div class="field">
     <%= form.label :age %>
     <%= form.number_field :age %>

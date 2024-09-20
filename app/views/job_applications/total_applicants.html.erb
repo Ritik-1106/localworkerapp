@@ -1,22 +1,31 @@
 <h2>Applicants for <%= @job.name %></h2>
+<table style="width:45%">
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Soft Skills</th>
+      <th>Expected Salary</th>
+      <th>Status</th>
+      <th>Applicants Profile</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @applicants.each do |applicant| %>
+      <tr>
+        <td><%= applicant.description %></td>
+        <td><%= applicant.softskills %></td>
+        <td><%= applicant.expected_salary %></td>
+        <td><%= applicant.status %></td>
+       <td><%= link_to 'View Profile', job_job_application_path(applicant.job_id, applicant.id) %></td>
 
-<% @applicants.each do |applicant| %>
-  <div>
-    <h3>Applicant: <%= applicant.worker.profile.name %></h3>
-    <p>Education: <%= applicant.worker.profile.education %></p>
-    <p>Skills: <%= applicant.worker.profile.skills %></p>
-    <p>Status: <%= applicant.status %></p>
 
-    <%= form_with model: applicant, url: update_status_job_application_path(applicant), method: :patch do |f| %>
-      <div>
-        <%= f.label :status, "Change Status" %>
-        <%= f.select :status, ["accepted", "rejected", "pending"], prompt: "Select Status" %>
-      </div>
-      <div>
-        <%= f.submit "Update Status" %>
-      </div>
+      </tr>
     <% end %>
-  </div>
-<% end %>
+  </tbody>
+</table>
+
+
 
 <%= link_to 'Back to Job', job_path(@job) %>
+
+<%= render 'shared/link' %>

@@ -1,0 +1,40 @@
+<h1>All Available Jobs</h1>
+
+<%= form_with url: worker_all_jobs_jobs_path, method: :get, local: true, class: "search-form" do %>
+  <%= text_field_tag :query, params[:query], placeholder: "Search by name, location, category, or salary" %>
+  <%= submit_tag "Search", class: "btn" %>
+<% end %>
+
+<% if @jobs.present? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Salary</th>
+        <th>Location</th>
+        <th>Category</th>
+        <th>Jobs</th>
+        <th>Apply now</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @jobs.each do |job| %>
+        <tr>
+          <td><%= job.name %></td>
+          <td><%= job.description %></td>
+          <td><%= number_to_currency(job.salary) %></td>
+          <td><%= job.location %></td>
+          <td><%= job.category.name if job.category %></td>
+          <td>
+            <%= link_to "View", job_path(job), class: "btn" %>
+             </td>
+           <td> <%= link_to "Apply", new_job_job_application_path(job), class: "btn" if current_user.worker? %></td>
+         
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No jobs found.</p>
+<% end %>

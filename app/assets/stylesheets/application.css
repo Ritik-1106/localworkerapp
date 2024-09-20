@@ -1,57 +1,53 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+body {
+  background: url('/assets/pngtree-illustration-about-calling-all-job-seeker-information-image_897812.jpg') no-repeat center center fixed;
+  background-size: cover; /* Ensures the image covers the whole background */
+  color: black; /* Font color */
+  font-family: Arial, sans-serif; /* Optional: Change to any font */
+  margin: 0;
+  padding: 0;
+}
 
+table {
+  border-collapse: collapse;
+  width: 100%;
+  background-color: #f8f9fa; /* Table background */
+  color: black; /* Font color for table */
+  margin: 20px 0; /* Add space around the table */
+}
 
- body {
-    background-color: black;
-    color: white;
-    font-family: Arial, sans-serif;
-  }
-  
-  h2 {
-    color: white;
-  }
-  
-  a {
-    color: grey;
-  }
-  
-  a:hover {
-    color: lightgrey;
-  }
-  
-  .field label {
-    color: white;
-  }
-  
-  input, select, textarea {
-    background-color: #333;
-    color: white;
-    border: 1px solid #555;
-  }
-  
-  input[type="submit"] {
-    background-color: grey;
-    color: black;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-  }
-  
-  input[type="submit"]:hover {
-    background-color: lightgrey;
-  }
-  
+th {
+  background-color: #343a40;
+  color: white;
+  padding: 12px;
+  border-right: 2px solid white;
+}
+
+td {
+  background-color: #e9ecef;
+  padding: 12px;
+  border-right: 2px solid white;
+}
+
+tr {
+  border-bottom: 2px solid white;
+}
+
+a {
+  color: blue; /* Link color */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+.top-right {
+  position: absolute;
+  top: 10px;  /* Adjust the distance from the top */
+  right: 10px; /* Adjust the distance from the right */
+  z-index: 1000; /* Ensure it stays above other content */
+}
+
+.top-right a {
+  text-decoration: none; /* Optional: Remove underline from the link */
+  font-weight: bold;     /* Optional: Make the link text bold */
+}

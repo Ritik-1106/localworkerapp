@@ -1,0 +1,33 @@
+<h1>My Jobs</h1>
+
+<%= form_with url: my_jobs_jobs_path, method: :get, local: true do %>
+  <div class="form-group">
+    <%= label_tag :query, "Search for Jobs" %>
+    <%= text_field_tag :query, params[:query], placeholder: "Enter job title, salary, location or category", class: "form-control" %>
+  </div>
+  <%= submit_tag 'Search', class: "btn btn-primary" %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Job Title</th>
+      <th>Description</th>
+      <th>Salary</th>
+      <th>Location</th>
+      <th>Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @jobs.each do |job| %>
+      <tr>
+        <td><%= job.name %></td>
+        <td><%= job.description %></td>
+        <td><%= job.salary %></td>
+        <td><%= job.location %></td>
+        <td><%= job.category.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

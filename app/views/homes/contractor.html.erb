@@ -8,7 +8,9 @@
   <li>Location: <%= @contractor.location %></li>
 </ul>
 
-<%= link_to 'Edit Profile', edit_user_path(@contractor) %>
+
 <%= link_to 'create jobpost', new_job_path %>
-<%= link_to 'View All Applicants', total_applicants_job_job_applications_path(@job) %>
+<%= link_to 'See Jobs', jobs_path %>
+<%= link_to 'MyJobs', my_jobs_jobs_path %>
+
 

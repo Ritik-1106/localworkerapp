@@ -6,17 +6,21 @@
 
 <!-- Link for workers to apply for the job -->
 <% if current_user.worker? %> <!-- Show the apply link only if the user is a worker -->
-  
-  <%= link_to 'Apply for Job', new_job_job_application_path(@job) %>
-
-
+  <% if current_user.job_applications.exists?(job_id: @job.id) %>
+    <h3>You have already applied for this job.</h3>
+  <% else %>
+    <%= link_to 'Apply for Job', new_job_job_application_path(@job) %>
+  <% end %>
 <% end %>
+
 
 <!-- Only contractors can see edit and delete job options -->
 <% if current_user.contractor? %>
   <%= link_to 'Edit Job', edit_job_path(@job) %>
   <%= link_to 'Delete Job', job_path(@job), data: { turbo_method: :delete }, method: :delete, confirm: 'Are you sure?' %>
   <%= link_to 'View All Applicants', total_applicants_job_job_applications_path(@job), class: 'btn btn-primary' %>
+  
 <% end %>
 
 <%= link_to 'See Jobs', jobs_path %>
+<%= render "shared/link" %>
