@@ -1,3 +1,4 @@
+<% if current_user.contractor? %>
 <h1>Contractor Dashboard</h1>
 
 <p>Welcome, <%= @contractor.name %>!</p>
@@ -11,6 +12,7 @@
 
 <%= link_to 'create jobpost', new_job_path %>
 <%= link_to 'See Jobs', jobs_path %>
-<%= link_to 'MyJobs', my_jobs_jobs_path %>
+<%= link_to 'SearchJobs', my_jobs_jobs_path %>
 
+<% end %>
 

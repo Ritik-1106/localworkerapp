@@ -3,12 +3,11 @@ class JobsController < ApplicationController
   before_action :authenticate_user!, except: [ :index, :show ]
 
   def index
-    # debugger
-    if current_user.contractor?
+  if current_user.contractor?
       @jobs = current_user.jobs
-    elsif current_user.worker?
+  elsif current_user.worker?
       @jobs = Job.all
-    end
+  end
   end
 
 
@@ -72,6 +71,7 @@ class JobsController < ApplicationController
   end
 
   def apply_filters
+        # debugger
         # Apply filters from the search bar if provided
         if params[:query].present?
           search_query = "%#{params[:query]}%"
@@ -80,6 +80,7 @@ class JobsController < ApplicationController
           if params[:query].match(/\A\d+\z/)
             salary_value = params[:query].to_i
             # Filter jobs with salary greater than or equal to the entered value
+
             @jobs = @jobs.where("jobs.salary >= ?", salary_value)
           else
             # Filter by job name, location, or category name if it's not a number

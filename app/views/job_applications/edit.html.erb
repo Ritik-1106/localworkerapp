@@ -1,0 +1,14 @@
+<h1>Edit Job Application Status</h1>
+
+<%= form_with(model: [@job, @job_application], url: job_job_application_path(@job, @job_application), method: :patch) do |f| %>
+  <div class="field">
+    <%= f.label :status %>
+    <%= f.select :status, options_for_select(['Pending', 'Accepted', 'Rejected'], @job_application.status) %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update Status" %>
+  </div>
+<% end %>
+
+<%= link_to 'Back to Job', job_path(@job) %>

@@ -48,6 +48,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem "letter_opener_web"
 end
 
 group :test do
@@ -57,5 +58,6 @@ group :test do
 end
 
 gem "devise", "~> 4.9"
-
+gem "mailcatcher"
+gem "byebug"
 gem "cancancan", "~> 3.6"

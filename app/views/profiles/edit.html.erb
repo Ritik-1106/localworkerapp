@@ -1,6 +1,6 @@
 <h1>Edit Your Profile</h1>
 
-<%= form_with(model: @profile, local: true, url: profile_path, method: :patch) do |form| %>
+<%= form_with(model: @profile, local: true, url: edit_profile_path, method: :patch) do |form| %>
   <div class="field">
     <%= form.label :age %>
     <%= form.number_field :age %>

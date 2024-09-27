@@ -1,26 +1,26 @@
-<%# <h2>Application Details for <%= @job_application.job.name %></h2> %>
+<h2>Applicants for <%= @job.name %></h2>
+<table style="width:45%">
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Soft Skills</th>
+      <th>Expected Salary</th>
+      <th>Status</th>
+      <%# <th>Applicant's Profile</th> %>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <% @applicants.each do |applicant| %>
+      <tr>
+        <td><%= applicant.description %></td>
+        <td><%= applicant.softskills %></td>
+        <td><%= applicant.expected_salary %></td>
+        <td><%= applicant.status %></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<% if current_user.worker? %>
-  <!-- Visible only to the worker who applied for the job -->
-  <h3>Your Application Details:</h3>
-  <p><strong>Description:</strong> <%= @job_application.description %></p>
-  <p><strong>Soft Skills:</strong> <%= @job_application.softskills %></p>
-  <p><strong>Expected Salary:</strong> <%= @job_application.expectedsalary %></p>
-  
-  
-
-<% elsif current_user.contractor? %>
-  <!-- Visible only to the contractor for review -->
-  <h3>Applicant Details:</h3>
-  <p><strong>Age:</strong> <%= @profile.age %></p>
-  <p><strong>Graduation:</strong> <%= @profile.graduation %></p>
-  <p><strong>Graduation Year:</strong> <%= @profile.graduation_year %></p>
-  <p><strong>PostGraduation:</strong> <%= @profile.postgraduation %></p>
-  <p><strong>PostGraduation Year:</strong> <%= @profile.postgraduation_year %></p>
-  <p><strong>Experience:</strong> <%= @profile.experience %></p>
-  <p><strong>Skills:</strong> <%= @profile.skills %></p>
-  <p><strong>Country:</strong> <%= @profile.country %></p>
-  
-<% end %>
-
-<%= render 'shared/links'%>
+<%= link_to 'Back to Job', job_path(@job) %>

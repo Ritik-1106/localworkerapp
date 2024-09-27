@@ -12,4 +12,5 @@ class JobApplication  < ApplicationRecord
   validates :worker_id, presence: true
   validates :description, presence: true
   validates :softskills, presence: true
+  validates :status, inclusion: { in: %w[Pending Accepted Rejected] }
 end

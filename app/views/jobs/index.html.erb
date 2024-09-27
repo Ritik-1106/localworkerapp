@@ -3,6 +3,7 @@
 <% if current_user.contractor? %>
   <%= link_to 'Post a Job', new_job_path %> <!-- Only for contractors -->
 <% end %>
+<%= render "shared/link" %>
 
 <table>
   <thead>

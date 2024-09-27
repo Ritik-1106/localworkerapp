@@ -7,6 +7,8 @@
       <th>Expected Salary</th>
       <th>Status</th>
       <th>Applicants Profile</th>
+      <th>Applicant selected</th>
+      
     </tr>
   </thead>
   <tbody>
@@ -16,10 +18,11 @@
         <td><%= applicant.softskills %></td>
         <td><%= applicant.expected_salary %></td>
         <td><%= applicant.status %></td>
-       <td><%= link_to 'View Profile', job_job_application_path(applicant.job_id, applicant.id) %></td>
-
-
-      </tr>
+        <td><%= link_to 'View Profile', profile_path(applicant.worker_id) %></td>
+        <td>
+          <%= link_to 'Edit Status', edit_job_job_application_path(@job, applicant) %>
+        </td>
+     </tr>
     <% end %>
   </tbody>
 </table>
@@ -27,5 +30,9 @@
 
 
 <%= link_to 'Back to Job', job_path(@job) %>
-
+ <%# partials %>
 <%= render 'shared/link' %>
+
+
+
+

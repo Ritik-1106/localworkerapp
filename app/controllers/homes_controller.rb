@@ -8,6 +8,6 @@ class HomesController < ApplicationController
   def worker
     @worker = current_user
   end
-def index
-end
+  def index
+  end
 end

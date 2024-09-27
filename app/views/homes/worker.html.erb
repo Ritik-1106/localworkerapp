@@ -1,3 +1,5 @@
+<% if current_user.worker?%>
+
 <h1>Worker Dashboard</h1>
 
 <p>Welcome, <%= @worker.name %>!</p>
@@ -17,3 +19,5 @@
 
 
 <%= link_to "see all post", jobs_path %>
+
+<%end%>
